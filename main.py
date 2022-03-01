@@ -34,9 +34,17 @@ def line_chart_example(x_ser, y_ser, min_ser):
     
 def scatter_chart_example(x_ser, y_ser):
     plt.figure()
-    plt.scatter(x_ser, y_ser)
+    plt.scatter(x_ser, y_ser, color="red", marker="x", s=200)
     plt.savefig("scatter_example.png")  
 
+def bar_chart_example(x_ser, y_ser):
+    plt.figure()
+    plt.bar(x_ser, y_ser)
+    plt.savefig("bar_example.png")  
+    
+# call bar_chart_example twice
+# 1. pts per player data
+# 2. count of each class
 
 def main():
     df = pd.read_csv("bball.csv", index_col=0)
@@ -96,6 +104,8 @@ def main():
     # 1. scatter
     scatter_chart_example(df.index, df["PTS"])
     # 2. bar
+    bar_chart_example(df.index, df["PTS"])
+    bar_chart_example(class_counts_ser.index, class_counts_ser)
     # 3. pie
     # 4. histogram
     # 5. (later) box plot
