@@ -1,6 +1,16 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
+def pie_chart_example(x_ser, y_ser):
+    plt.figure()
+    plt.pie(y_ser, labels=x_ser, autopct="%.2f%%")
+    plt.savefig("pie_example.png")
+
+def histogram_chart_example(x_ser):
+    plt.figure()
+    plt.hist(x_ser, bins=5)
+    plt.savefig("histogram_example.png")
+
 
 def line_chart_example(x_ser, y_ser, min_ser):
     plt.plot(x_ser, y_ser, label="PTS", lw=5, ls="--")
@@ -107,7 +117,13 @@ def main():
     bar_chart_example(df.index, df["PTS"])
     bar_chart_example(class_counts_ser.index, class_counts_ser)
     # 3. pie
+
+    pie_chart_example(class_counts_ser.index, class_counts_ser)
     # 4. histogram
+    # showing the distribution of a numeric attribute
+    # by showing the counts of values for "bins" number of 
+    # equal width bins
+    histogram_chart_example(df["MIN"])
     # 5. (later) box plot
 
 
